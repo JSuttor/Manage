@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Manage.Compute;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -21,6 +22,7 @@ namespace Manage
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            Map map1 = new Map();
         }
 
         protected override void LoadContent()

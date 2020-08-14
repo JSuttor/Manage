@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>C86B15730104A6CB4D9E036CAAC2205471B931A2D753CF4300DEC7D71991362A</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>C2E5EF2E61583C26EB631F02197A49BA516C601ED10A942A0D9A577F0E095693</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>Manage_1.0.0.0_x86__3mytae7drxp1c</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>Manage_3mytae7drxp1c!App</RegisteredUserModeAppID>
     <RegisteredPackageID>Manage</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-08-12T02:44:11.890</Modified>
+      <Modified>2020-08-14T05:10:10.985</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Manage.exe">
       <PackagePath>entrypoint\Manage.exe</PackagePath>
-      <Modified>2020-08-12T02:44:08.547</Modified>
+      <Modified>2020-08-14T05:10:08.592</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\docto\.nuget\packages\monogame.framework.windowsuniversal\3.8.0.1641\lib\uap10.0\MonoGame.Framework.dll">
       <PackagePath>MonoGame.Framework.dll</PackagePath>
@@ -118,11 +118,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-08-12T02:44:09.939</Modified>
+      <Modified>2020-08-12T23:24:50.259</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\Manage.exe">
       <PackagePath>Manage.exe</PackagePath>
-      <Modified>2020-08-12T02:44:11.856</Modified>
+      <Modified>2020-08-14T05:10:10.982</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
