@@ -30,13 +30,13 @@
     <AppXManifest Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-08-14T05:10:10.985</Modified>
+      <Modified>2020-08-20T03:57:38.145</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Manage.exe">
       <PackagePath>entrypoint\Manage.exe</PackagePath>
-      <Modified>2020-08-14T05:10:08.592</Modified>
+      <Modified>2020-08-20T03:57:35.557</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\docto\.nuget\packages\monogame.framework.windowsuniversal\3.8.0.1641\lib\uap10.0\MonoGame.Framework.dll">
       <PackagePath>MonoGame.Framework.dll</PackagePath>
@@ -112,17 +112,57 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <Modified>2020-08-12T02:24:35.237</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Controls\refresh.xnb">
+      <PackagePath>Content/Controls\refresh.xnb</PackagePath>
+      <Modified>2020-08-15T17:30:38.881</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Fonts\File.xnb">
+      <PackagePath>Content/Fonts\File.xnb</PackagePath>
+      <Modified>2020-08-15T17:30:38.991</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Fonts\Font.xnb">
+      <PackagePath>Content/Fonts\Font.xnb</PackagePath>
+      <Modified>2020-08-15T18:29:40.802</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\City.xnb">
+      <PackagePath>Content/Map\City.xnb</PackagePath>
+      <Modified>2020-08-15T15:42:01.287</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest.xnb">
+      <PackagePath>Content/Map\forest.xnb</PackagePath>
+      <Modified>2020-08-15T17:01:43.653</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\grass.xnb">
+      <PackagePath>Content/Map\grass.xnb</PackagePath>
+      <Modified>2020-08-15T17:01:43.701</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain.xnb">
+      <PackagePath>Content/Map\mountain.xnb</PackagePath>
+      <Modified>2020-08-15T17:01:43.709</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\sand.xnb">
+      <PackagePath>Content/Map\sand.xnb</PackagePath>
+      <Modified>2020-08-15T17:01:43.713</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\snow.xnb">
+      <PackagePath>Content/Map\snow.xnb</PackagePath>
+      <Modified>2020-08-15T17:01:43.720</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\water.xnb">
+      <PackagePath>Content/Map\water.xnb</PackagePath>
+      <Modified>2020-08-15T15:42:01.356</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2019-03-18T21:33:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-08-12T23:24:50.259</Modified>
+      <Modified>2020-08-15T18:29:43.080</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\Manage.exe">
       <PackagePath>Manage.exe</PackagePath>
-      <Modified>2020-08-14T05:10:10.982</Modified>
+      <Modified>2020-08-20T03:57:38.111</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

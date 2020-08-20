@@ -45,3 +45,13 @@ E:\projects\Manage\Manage\obj\x86\Debug\qualifiers.txt.intermediate
 E:\projects\Manage\Manage\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 E:\projects\Manage\Manage\obj\x86\Debug\ProjectArchitectures.txt
 E:\projects\Manage\Manage\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885454160000000.json
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\City.xnb
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\water.xnb
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\forest.xnb
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\grass.xnb
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\mountain.xnb
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\sand.xnb
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\snow.xnb
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Controls\refresh.xnb
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Fonts\File.xnb
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Fonts\Font.xnb

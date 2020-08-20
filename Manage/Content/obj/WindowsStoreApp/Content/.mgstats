@@ -1,1 +1,10 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"E:/projects/Manage/Manage/Content/Controls/refresh.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Controls/refresh.xnb","TextureProcessor","Texture2DContent",11943,1048661,0.1656008
+"E:/projects/Manage/Manage/Content/Fonts/Font.spritefont","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Fonts/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0.2128651
+"E:/projects/Manage/Manage/Content/Map/City.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/City.xnb","TextureProcessor","Texture2DContent",9868,120085,0.15842
+"E:/projects/Manage/Manage/Content/Map/forest.jpg","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/forest.xnb","TextureProcessor","Texture2DContent",105678,1048661,0.1753263
+"E:/projects/Manage/Manage/Content/Map/grass.jpg","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/grass.xnb","TextureProcessor","Texture2DContent",123185,1210085,0.0437747
+"E:/projects/Manage/Manage/Content/Map/mountain.jpeg","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/mountain.xnb","TextureProcessor","Texture2DContent",9863,201685,0.0072219
+"E:/projects/Manage/Manage/Content/Map/sand.jpeg","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/sand.xnb","TextureProcessor","Texture2DContent",4936,45453,0.0030008
+"E:/projects/Manage/Manage/Content/Map/snow.jpeg","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/snow.xnb","TextureProcessor","Texture2DContent",4167,202585,0.0078689
+"E:/projects/Manage/Manage/Content/Map/water.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/water.xnb","TextureProcessor","Texture2DContent",51246,1048661,0.0595635

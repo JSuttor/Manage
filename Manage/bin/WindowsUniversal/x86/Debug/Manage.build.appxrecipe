@@ -84,6 +84,36 @@
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Controls\refresh.xnb">
+      <PackagePath>Content/Controls\refresh.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Fonts\File.xnb">
+      <PackagePath>Content/Fonts\File.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Fonts\Font.xnb">
+      <PackagePath>Content/Fonts\Font.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\City.xnb">
+      <PackagePath>Content/Map\City.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest.xnb">
+      <PackagePath>Content/Map\forest.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\grass.xnb">
+      <PackagePath>Content/Map\grass.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain.xnb">
+      <PackagePath>Content/Map\mountain.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\sand.xnb">
+      <PackagePath>Content/Map\sand.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\snow.xnb">
+      <PackagePath>Content/Map\snow.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\water.xnb">
+      <PackagePath>Content/Map\water.xnb</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
