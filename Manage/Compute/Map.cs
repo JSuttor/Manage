@@ -46,12 +46,14 @@ namespace Manage.Compute
         private Texture2D snow;
         private Texture2D city;
 
+        //constructor
         public Map(ContentManager content)
         {
             //load biome images on new object
             loadAssets(content);
         }
 
+        //generate biome map
         public void generateMap(int mapSize)
         {
             //note, algorithm slightly favors stretching biomes towards bottom right due to looping. Think about later. Maybe double buffer the array? sounds like a maybe
@@ -207,10 +209,10 @@ namespace Manage.Compute
             cityArr = startPts;
             cityNum = totalBiomes;
         }
-        
+
+        //purely for testing purposes, put an integer representation of the biome map in the console
         public void printMapArr(int xSize, int ySize)
         {
-            //purely for testing purposes, put an integer representation of the biome map in the console
             for (int i = 0; i < xSize; i++)
             {
                 for (int j = 0; j < ySize; j++)
