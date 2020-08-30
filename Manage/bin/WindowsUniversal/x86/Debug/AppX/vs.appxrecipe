@@ -30,13 +30,13 @@
     <AppXManifest Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-08-25T04:29:50.844</Modified>
+      <Modified>2020-08-30T04:38:56.096</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Manage.exe">
       <PackagePath>entrypoint\Manage.exe</PackagePath>
-      <Modified>2020-08-25T04:29:48.526</Modified>
+      <Modified>2020-08-30T04:38:53.540</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\docto\.nuget\packages\monogame.framework.windowsuniversal\3.8.0.1641\lib\uap10.0\MonoGame.Framework.dll">
       <PackagePath>MonoGame.Framework.dll</PackagePath>
@@ -112,6 +112,14 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <Modified>2020-08-12T02:24:35.237</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Controls\basicButton.xnb">
+      <PackagePath>Content/Controls\basicButton.xnb</PackagePath>
+      <Modified>2020-08-27T03:05:21.109</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Controls\menuButton.xnb">
+      <PackagePath>Content/Controls\menuButton.xnb</PackagePath>
+      <Modified>2020-08-27T02:52:32.999</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Controls\refresh.xnb">
       <PackagePath>Content/Controls\refresh.xnb</PackagePath>
       <Modified>2020-08-15T17:30:38.881</Modified>
@@ -122,35 +130,143 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Fonts\Font.xnb">
       <PackagePath>Content/Fonts\Font.xnb</PackagePath>
-      <Modified>2020-08-15T18:29:40.802</Modified>
+      <Modified>2020-08-27T03:13:39.805</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\boat.xnb">
+      <PackagePath>Content/Map\boat.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.161</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\cacti.xnb">
+      <PackagePath>Content/Map\cacti.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.175</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\cactus.xnb">
+      <PackagePath>Content/Map\cactus.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.181</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\City.xnb">
       <PackagePath>Content/Map\City.xnb</PackagePath>
       <Modified>2020-08-15T15:42:01.287</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\desert.xnb">
+      <PackagePath>Content/Map\desert.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.210</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\desertHill.xnb">
+      <PackagePath>Content/Map\desertHill.xnb</PackagePath>
+      <Modified>2020-08-29T06:08:04.114</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\desertRock.xnb">
+      <PackagePath>Content/Map\desertRock.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.224</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\dune.xnb">
+      <PackagePath>Content/Map\dune.xnb</PackagePath>
+      <Modified>2020-08-30T02:57:43.031</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest.xnb">
       <PackagePath>Content/Map\forest.xnb</PackagePath>
-      <Modified>2020-08-15T17:01:43.653</Modified>
+      <Modified>2020-08-29T05:51:03.722</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest1.xnb">
+      <PackagePath>Content/Map\forest1.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.258</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest2.xnb">
+      <PackagePath>Content/Map\forest2.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.281</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest3.xnb">
+      <PackagePath>Content/Map\forest3.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.288</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest4.xnb">
+      <PackagePath>Content/Map\forest4.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.307</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\grass.xnb">
       <PackagePath>Content/Map\grass.xnb</PackagePath>
-      <Modified>2020-08-15T17:01:43.701</Modified>
+      <Modified>2020-08-29T05:35:41.557</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\grass1.xnb">
+      <PackagePath>Content/Map\grass1.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.339</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\hill.xnb">
+      <PackagePath>Content/Map\hill.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.347</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\hill2.xnb">
+      <PackagePath>Content/Map\hill2.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.353</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\hill3.xnb">
+      <PackagePath>Content/Map\hill3.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.360</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\house1.xnb">
+      <PackagePath>Content/Map\house1.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.367</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\iceHill.xnb">
+      <PackagePath>Content/Map\iceHill.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.382</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\iceHill2.xnb">
+      <PackagePath>Content/Map\iceHill2.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.390</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\island.xnb">
+      <PackagePath>Content/Map\island.xnb</PackagePath>
+      <Modified>2020-08-30T02:58:01.579</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\monster.xnb">
+      <PackagePath>Content/Map\monster.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.396</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain.xnb">
       <PackagePath>Content/Map\mountain.xnb</PackagePath>
-      <Modified>2020-08-15T17:01:43.709</Modified>
+      <Modified>2020-08-27T05:16:47.044</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain1.xnb">
+      <PackagePath>Content/Map\mountain1.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.432</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain2.xnb">
+      <PackagePath>Content/Map\mountain2.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.455</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain3.xnb">
+      <PackagePath>Content/Map\mountain3.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.465</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain4.xnb">
+      <PackagePath>Content/Map\mountain4.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.473</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\sand.xnb">
       <PackagePath>Content/Map\sand.xnb</PackagePath>
-      <Modified>2020-08-15T17:01:43.713</Modified>
+      <Modified>2020-08-29T05:48:29.588</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\snow.xnb">
       <PackagePath>Content/Map\snow.xnb</PackagePath>
-      <Modified>2020-08-15T17:01:43.720</Modified>
+      <Modified>2020-08-27T05:00:57.707</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\water.xnb">
       <PackagePath>Content/Map\water.xnb</PackagePath>
-      <Modified>2020-08-15T15:42:01.356</Modified>
+      <Modified>2020-08-29T05:53:34.497</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\waves.xnb">
+      <PackagePath>Content/Map\waves.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.518</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\waves2.xnb">
+      <PackagePath>Content/Map\waves2.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.525</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\waves3.xnb">
+      <PackagePath>Content/Map\waves3.xnb</PackagePath>
+      <Modified>2020-08-29T03:14:14.531</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -158,11 +274,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-08-15T18:29:43.080</Modified>
+      <Modified>2020-08-30T02:58:03.465</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\Manage.exe">
       <PackagePath>Manage.exe</PackagePath>
-      <Modified>2020-08-25T04:29:50.840</Modified>
+      <Modified>2020-08-30T04:38:56.093</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

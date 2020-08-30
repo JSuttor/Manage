@@ -51,40 +51,40 @@ namespace Manage
 
         protected override void LoadContent()
         {
-            var smallMapButton = new Button(Content.Load<Texture2D>("Controls/refresh"), Content.Load<SpriteFont>("Fonts/Font"))
+            var smallMapButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(45, 0),
-                Width = 20,
-                Height = 20,
-                Text = "S",
+                Position = new Vector2(100, 0),
+                Width = 150,
+                Height = 64,
+                Text = "SMALL",
             };
-            var mediumMapButton = new Button(Content.Load<Texture2D>("Controls/refresh"), Content.Load<SpriteFont>("Fonts/Font"))
+            var mediumMapButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(70, 0),
-                Width = 20,
-                Height = 20,
-                Text = "M",
+                Position = new Vector2(300, 0),
+                Width = 200,
+                Height = 64,
+                Text = "MEDIUM",
             };
-            var largeMapButton = new Button(Content.Load<Texture2D>("Controls/refresh"), Content.Load<SpriteFont>("Fonts/Font"))
+            var largeMapButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(95, 0),
-                Width = 20,
-                Height = 20,
-                Text = "L",
+                Position = new Vector2(550, 0),
+                Width = 150,
+                Height = 64,
+                Text = "LARGE",
             };
-            var menuButton = new Button(Content.Load<Texture2D>("Controls/refresh"), Content.Load<SpriteFont>("Fonts/Font"))
+            var menuButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(220, 0),
-                Width = 20,
-                Height = 20,
-                Text = "M",
+                Position = new Vector2(750, 0),
+                Width = 128,
+                Height = 64,
+                Text = "MENU",
             };
-            var newGameButton = new Button(Content.Load<Texture2D>("Controls/refresh"), Content.Load<SpriteFont>("Fonts/Font"))
+            var newGameButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(95, 0),
-                Width = 20,
-                Height = 20,
-                Text = "N",
+                Position = new Vector2(100, 0),
+                Width = 128,
+                Height = 64,
+                Text = "NEW",
             };
 
             smallMapButton.Click += SmallMapButton_Click;
@@ -206,7 +206,7 @@ namespace Manage
             spriteBatch.End();
 
             if (mapExists)
-                gameMap.displayMap(20, 20, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, mapSprite);
+                gameMap.displayMap(100, 100, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, mapSprite);
         }
         protected void DrawMainGame(GameTime gameTime)
         {

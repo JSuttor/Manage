@@ -84,6 +84,12 @@
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Controls\basicButton.xnb">
+      <PackagePath>Content/Controls\basicButton.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Controls\menuButton.xnb">
+      <PackagePath>Content/Controls\menuButton.xnb</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Controls\refresh.xnb">
       <PackagePath>Content/Controls\refresh.xnb</PackagePath>
     </AppxPackagedFile>
@@ -93,17 +99,89 @@
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Fonts\Font.xnb">
       <PackagePath>Content/Fonts\Font.xnb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\boat.xnb">
+      <PackagePath>Content/Map\boat.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\cacti.xnb">
+      <PackagePath>Content/Map\cacti.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\cactus.xnb">
+      <PackagePath>Content/Map\cactus.xnb</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\City.xnb">
       <PackagePath>Content/Map\City.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\desert.xnb">
+      <PackagePath>Content/Map\desert.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\desertHill.xnb">
+      <PackagePath>Content/Map\desertHill.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\desertRock.xnb">
+      <PackagePath>Content/Map\desertRock.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\dune.xnb">
+      <PackagePath>Content/Map\dune.xnb</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest.xnb">
       <PackagePath>Content/Map\forest.xnb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest1.xnb">
+      <PackagePath>Content/Map\forest1.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest2.xnb">
+      <PackagePath>Content/Map\forest2.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest3.xnb">
+      <PackagePath>Content/Map\forest3.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\forest4.xnb">
+      <PackagePath>Content/Map\forest4.xnb</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\grass.xnb">
       <PackagePath>Content/Map\grass.xnb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\grass1.xnb">
+      <PackagePath>Content/Map\grass1.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\hill.xnb">
+      <PackagePath>Content/Map\hill.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\hill2.xnb">
+      <PackagePath>Content/Map\hill2.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\hill3.xnb">
+      <PackagePath>Content/Map\hill3.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\house1.xnb">
+      <PackagePath>Content/Map\house1.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\iceHill.xnb">
+      <PackagePath>Content/Map\iceHill.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\iceHill2.xnb">
+      <PackagePath>Content/Map\iceHill2.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\island.xnb">
+      <PackagePath>Content/Map\island.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\monster.xnb">
+      <PackagePath>Content/Map\monster.xnb</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain.xnb">
       <PackagePath>Content/Map\mountain.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain1.xnb">
+      <PackagePath>Content/Map\mountain1.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain2.xnb">
+      <PackagePath>Content/Map\mountain2.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain3.xnb">
+      <PackagePath>Content/Map\mountain3.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\mountain4.xnb">
+      <PackagePath>Content/Map\mountain4.xnb</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\sand.xnb">
       <PackagePath>Content/Map\sand.xnb</PackagePath>
@@ -113,6 +191,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\water.xnb">
       <PackagePath>Content/Map\water.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\waves.xnb">
+      <PackagePath>Content/Map\waves.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\waves2.xnb">
+      <PackagePath>Content/Map\waves2.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\waves3.xnb">
+      <PackagePath>Content/Map\waves3.xnb</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
