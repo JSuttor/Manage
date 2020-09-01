@@ -23,6 +23,8 @@ namespace Manage
         private List<Component> settingsScreenComponents;
         private List<Component> newGameScreenComponents;
         private List<Component> mainGameScreenComponents;
+        Vector2 mapCenter = new Vector2(0,0);
+        int zoomPct = 100;
 
         enum GameState
         {
@@ -48,6 +50,8 @@ namespace Manage
             base.Initialize();
             currentState = GameState.menu;
         }
+
+
 
         protected override void LoadContent()
         {
@@ -86,12 +90,61 @@ namespace Manage
                 Height = 64,
                 Text = "NEW",
             };
+            var zoomInButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
+            {
+                Position = new Vector2(1000, 0),
+                Width = 64,
+                Height = 64,
+                Text = "+",
+            };
+            var zoomOutButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
+            {
+                Position = new Vector2(1100, 0),
+                Width = 64,
+                Height = 64,
+                Text = "-",
+            };
+            var upButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
+            {
+                Position = new Vector2(1300, 0),
+                Width = 32,
+                Height = 32,
+                Text = "^",
+            };
+            var leftButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
+            {
+                Position = new Vector2(1268, 32),
+                Width = 32,
+                Height = 32,
+                Text = "<",
+            };
+            var downButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
+            {
+                Position = new Vector2(1300, 32),
+                Width = 32,
+                Height = 32,
+                Text = "v",
+            };
+            var rightButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
+            {
+                Position = new Vector2(1332, 32),
+                Width = 32,
+                Height = 32,
+                Text = ">",
+            };
 
             smallMapButton.Click += SmallMapButton_Click;
             mediumMapButton.Click += MediumMapButton_Click;
             largeMapButton.Click += LargeMapButton_Click;
-            newGameButton.Click += NewGameButton_Click; ;
+            newGameButton.Click += NewGameButton_Click;
             menuButton.Click += MenuButton_Click;
+            zoomInButton.Click += zoomInButton_Click;
+            zoomOutButton.Click += ZoomOutButton_Click;
+            upButton.Click += UpButton_Click;
+            leftButton.Click += LeftButton_Click;
+            downButton.Click += DownButton_Click;
+            rightButton.Click += RightButton_Click;
+
 
             menuScreenComponents = new List<Component>()
             {
@@ -106,28 +159,57 @@ namespace Manage
                 mediumMapButton,
                 largeMapButton,
                 menuButton,
+                zoomInButton,
+                zoomOutButton,
+                upButton,
+                leftButton,
+                rightButton,
+                downButton,
             };
             mainGameScreenComponents = new List<Component>()
             {
             };
         }
 
+        private void RightButton_Click(object sender, System.EventArgs e)
+        {
+            mapCenter.X--;
+        }
+
+        private void DownButton_Click(object sender, System.EventArgs e)
+        {
+            mapCenter.Y--;
+        }
+
+        private void LeftButton_Click(object sender, System.EventArgs e)
+        {
+            mapCenter.X++;
+        }
+
+        private void UpButton_Click(object sender, System.EventArgs e)
+        {
+            mapCenter.Y++;
+        }
+
         private void LargeMapButton_Click(object sender, System.EventArgs e)
         {
             mapSize = 3;
             mapExists = true;
+            zoomPct = 100;
             gameMap.generateMap(mapSize);
         }
         private void MediumMapButton_Click(object sender, System.EventArgs e)
         {
             mapSize = 2;
             mapExists = true;
+            zoomPct = 100;
             gameMap.generateMap(mapSize);
         }
         private void SmallMapButton_Click(object sender, System.EventArgs e)
         {
             mapSize = 1;
             mapExists = true;
+            zoomPct = 100;
             gameMap.generateMap(mapSize);
         }
         private void NewGameButton_Click(object sender, System.EventArgs e)
@@ -138,6 +220,17 @@ namespace Manage
         {
             currentState = GameState.menu;
         }
+        private void zoomInButton_Click(object sender, System.EventArgs e)
+        {
+            if (zoomPct >= 80)
+                zoomPct -= 5;
+        }
+        private void ZoomOutButton_Click(object sender, System.EventArgs e)
+        {
+            if (zoomPct <= 95)
+                zoomPct += 5;
+        }
+
         protected override void Update(GameTime gameTime)
         {
             switch (currentState)
@@ -206,7 +299,7 @@ namespace Manage
             spriteBatch.End();
 
             if (mapExists)
-                gameMap.displayMap(100, 100, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, mapSprite);
+                gameMap.displayMap(100, 100, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, zoomPct, ref mapCenter, mapSprite);
         }
         protected void DrawMainGame(GameTime gameTime)
         {

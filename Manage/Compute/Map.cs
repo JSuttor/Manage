@@ -27,6 +27,7 @@ namespace Manage.Compute
         int biomeNum = 5;               //number of types of biomes
         int biomeRepeat;                //number of each biome on the map
         int biomeSizeMult;              //smaller value is larger biome
+        bool generatingPos = false;
 
         //ACCESSIBLE
         int cityNum;                    //populated with number of cities
@@ -37,8 +38,9 @@ namespace Manage.Compute
         int mapSizeY = 128;             //populated with number of vertical chunks
         int totalBiomes;                //populated with number of biomes, biomeRepeat * biomeNum
         int[,] startPts;                //populated with beginning points for biome gen
-        Texture2D[,] features;
-        Vector2[,] positions; 
+        Texture2D[,] features;          //map visual features
+        Vector2[,] positions;           //actual position of every map block
+
 
 
         //constructor
@@ -62,6 +64,10 @@ namespace Manage.Compute
             int current;                    //stores biome type being expanded for biome gen
             int direction;                  //tracks direction of expansion for biome gen
             mapSize = passMapSize;
+            initCenter = true;
+
+            positions = null;
+            generatingPos = false;
 
             //set biome parameters for different sizes. small = 1, medium = 2, large = 3. see comments documenting variable uses in vatriable declaration
             if (mapSize == 1)                   //small map
@@ -455,12 +461,22 @@ namespace Manage.Compute
             }
         }
 
+        Vector2 mapCenter;
+        bool initCenter = true;
+        int zoomStartX;
+        int zoomStartY;
+        int zoomSubX;
+        int zoomSubY;
+
         //display map to screen in position and size passed
-        public void displayMap(int startX, int startY, int dispSizeX, int dispSizeY, SpriteBatch mapSprite)
+        public void displayMap(int startX, int startY, int dispSizeX, int dispSizeY, int zoomPct, ref Vector2 moveMap, SpriteBatch mapSprite)
         {
             //define the map ratio. This will later allow different ratios in different areas if passed
             double xRatio = 15;             //x per yRatio
             double yRatio = 9;              //y per xRatio
+
+            int mapBlocksX;
+            int mapBlocksY;
 
             //if the y size is too large for the x size to maintain the ratio
             if (dispSizeX * yRatio / xRatio < dispSizeY)
@@ -475,12 +491,74 @@ namespace Manage.Compute
                 dispSizeX = Convert.ToInt32(Convert.ToDouble(dispSizeY) * xRatio / yRatio);
             }
 
+
+            zoomStartX = mapSizeX - Convert.ToInt32(Convert.ToDouble(mapSizeX) * (Convert.ToDouble(zoomPct) / 100.0)) + Convert.ToInt32(mapCenter.X);
+            zoomStartY = mapSizeX - Convert.ToInt32(Convert.ToDouble(mapSizeY) * (Convert.ToDouble(zoomPct) / 100.0)) + Convert.ToInt32(mapCenter.Y);
+            zoomSubX = Convert.ToInt32(Convert.ToDouble(mapSizeX) * (Convert.ToDouble(zoomPct) / 100.0)) + Convert.ToInt32(mapCenter.X);
+            zoomSubY = Convert.ToInt32(Convert.ToDouble(mapSizeY) * (Convert.ToDouble(zoomPct) / 100.0)) + Convert.ToInt32(mapCenter.Y);
+
+
+            if (initCenter)
+            {
+                mapCenter.X = 0;
+                mapCenter.Y = 0;
+                initCenter = false;
+
+            }
+
+            if(moveMap.X == -1 && zoomSubX < mapSizeX)
+            {
+                mapCenter.X++;
+            }
+            else if (moveMap.X == 1 && zoomStartX > 0)
+            {
+                mapCenter.X--;
+            }
+            moveMap.X = 0;
+            if (moveMap.Y == -1 && zoomSubY < mapSizeY)
+            {
+                mapCenter.Y++;
+            }
+            else if (moveMap.Y == 1 && zoomStartY > 0)
+            {
+                mapCenter.Y--;
+            }
+            moveMap.Y = 0;
+
+            mapBlocksX = zoomSubX - zoomStartX;
+            mapBlocksY = zoomSubY - zoomStartY;
+
+            if(zoomSubX > mapSizeX)
+            {
+                zoomStartX -= (zoomSubX - mapSizeX);
+                mapCenter.X -= (zoomSubX - mapSizeX);
+                zoomSubX = mapSizeX;
+            }
+            if (zoomSubY > mapSizeY)
+            {
+                zoomStartY -= (zoomSubY - mapSizeY);
+                mapCenter.Y -= (zoomSubY - mapSizeY);
+                zoomSubY = mapSizeY;
+            }
+            if (zoomStartX < 0)
+            {
+                mapCenter.X -= zoomStartX;
+                zoomSubX -= zoomStartX;
+                zoomStartX = 0;
+            }
+            if (zoomStartY < 0)
+            {
+                mapCenter.Y -= zoomStartY;
+                zoomSubY -= zoomStartY;
+                zoomStartY = 0;
+            }
+
             //TEMPORARY USE VARIABLES FOR MAP DISPLAY
             double xPos = startX;           //actual position from upper left of map that current chunk is drawn from
             double yPos = startY;           //  ''
             //chunk's size as a double. Each chunk will be slightly smaller or larger depending on position to allow for more dynamic size variation
-            double xSize = (Convert.ToDouble(dispSizeX) - (Convert.ToDouble(startX) * 2)) / Convert.ToDouble(mapSizeX);     
-            double ySize = (Convert.ToDouble(dispSizeY) - (Convert.ToDouble(startY) * 2)) / Convert.ToDouble(mapSizeY);
+            double xSize = (Convert.ToDouble(dispSizeX) - (Convert.ToDouble(startX) * 2)) / Convert.ToDouble(mapBlocksX);     
+            double ySize = (Convert.ToDouble(dispSizeY) - (Convert.ToDouble(startY) * 2)) / Convert.ToDouble(mapBlocksY);
             //These 4 are calculated using xSize and ySize doubles for each chunk on the fly so that the map size does not have to
             //be smaller or larger than intended due to a set number of chunks of a set size
             int xPosInt = Convert.ToInt32(xPos);
@@ -491,21 +569,27 @@ namespace Manage.Compute
 
 
             //a table to look up the pixel position of the upper left corner of map blocks
-            positions = new Vector2[mapSizeX,mapSizeY];
+            if (positions == null) {
+                positions = new Vector2[mapSizeX, mapSizeY];
+                generatingPos = true;
+            }
 
             mapSprite.Begin();
 
             //for each chunk on map
-            for (int i = 0; i < mapSizeY; i++) 
+            for (int i = zoomStartY; i < zoomSubY; i++) 
             {
-                for (int j = 0; j < mapSizeX; j++)
+                for (int j = zoomStartX; j < zoomSubX; j++)
                 {
                     //resolve size and position to integer (always shrinks to avoid gaps between chunks, 
                     //this is a product of double to int conversion but works to my advantage)
                     xPosInt = Convert.ToInt32(xPos);
                     yPosInt = Convert.ToInt32(yPos);
-                    positions[i, j].X = xPosInt;
-                    positions[i, j].Y = yPosInt;
+                    if (generatingPos)
+                    {
+                        positions[i, j].X = xPosInt;
+                        positions[i, j].Y = yPosInt;
+                    }
                     xSizeInt = Convert.ToInt32(xSize) + 1;
                     ySizeInt = Convert.ToInt32(ySize) + 1;
                     //if we are calculating the position of a chunk that happens to be a biome start point, 
@@ -572,11 +656,11 @@ namespace Manage.Compute
                 //shrink the size of features by a lot
                 size = Convert.ToInt32(Convert.ToDouble(size) * .6);
             }
-
+            size = Convert.ToInt32(Convert.ToDouble(size) / (Convert.ToDouble(zoomPct) / 100.0));
             //draw map features
-            for (int i = 0; i < mapSizeY; i++) //for each x
+            for (int i = zoomStartY; i < zoomSubY; i++) //for each x
             {
-                for (int j = 0; j < mapSizeX; j++) //for each y
+                for (int j = zoomStartX; j < zoomSubX; j++) //for each y
                 {
                     if(features[i,j] != null) //if there is a feature on this block
                     {
@@ -595,6 +679,7 @@ namespace Manage.Compute
                 mapSprite.Draw(city, new Rectangle(cityArr[i, 2], cityArr[i, 3], 30, 30), Color.White);
             }
             */
+            
             mapSprite.End();
         }
 
