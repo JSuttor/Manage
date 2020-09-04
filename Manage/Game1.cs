@@ -304,7 +304,7 @@ namespace Manage
             {
                 dispCities = true;
                 gameMap.displayMap(100, 100, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, zoomPct, ref mapCenter, dispCities, mapSprite);
-                gameMap.highlightBlock(spriteBatch);
+                //gameMap.highlightBlock(spriteBatch);
             }
         }
         protected void DrawMainGame(GameTime gameTime)

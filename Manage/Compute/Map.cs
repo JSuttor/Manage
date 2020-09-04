@@ -27,20 +27,18 @@ namespace Manage.Compute
         int biomeNum = 5;               //number of types of biomes
         int biomeRepeat;                //number of each biome on the map
         int biomeSizeMult;              //smaller value is larger biome
-        bool generatingPos = false;
 
         //ACCESSIBLE
         int cityNum;                    //populated with number of cities
-        int[,] mapArr;                  //populated with integer representation of biome map
+        //int[,] mapArr;                  //populated with integer representation of biome map
         int[,] cityArr;                 //populated with cities (for now, same as start points)
         int mapSize;
         int mapSizeX = 128;             //populated with number of horizontal chunks
         int mapSizeY = 128;             //populated with number of vertical chunks
         int totalBiomes;                //populated with number of biomes, biomeRepeat * biomeNum
         int[,] startPts;                //populated with beginning points for biome gen
-        Texture2D[,] features;          //map visual features
-        Vector2[,] positions;           //actual position of every map block
-        Rectangle[,] blockRects;
+        //Texture2D[,] features;          //map visual features
+        Block[,] blocks;
 
 
 
@@ -67,9 +65,6 @@ namespace Manage.Compute
             mapSize = passMapSize;
             initCenter = true;
 
-            positions = null;
-            generatingPos = false;
-
             //set biome parameters for different sizes. small = 1, medium = 2, large = 3. see comments documenting variable uses in vatriable declaration
             if (mapSize == 1)                   //small map
             {
@@ -92,10 +87,20 @@ namespace Manage.Compute
                 mapSizeY = 256;
                 biomeRepeat = 3;                //3 of each
             }
-            
-            mapArr = new int[mapSizeX, mapSizeY];   //declare map based on size
+
+            blocks = new Block[mapSizeX, mapSizeY];
+
+            for(int i = 0; i < mapSizeY; i++)
+            {
+                for (int j = 0; j < mapSizeX; j++)
+                {
+                    blocks[i, j] = new Block(water);
+                }
+            }
+
+            //mapArr = new int[mapSizeX, mapSizeY];   //declare map based on size
             totalBiomes = biomeNum * biomeRepeat;   //populate total biomes
-            startPts = new int[totalBiomes, 4];     //declare number of start points based on biome number
+            startPts = new int[totalBiomes, 2];     //declare number of start points based on biome number
 
             //calculate the minimum distance biome start points can be placed from each other
             int minDistance = minDistance = (((mapSizeX + mapSizeY) / 2) / (totalBiomes)); ;
@@ -115,7 +120,7 @@ namespace Manage.Compute
             int sizeDef = 2;
             
             //loop to place biomes
-            for (int i = 1; i <= totalBiomes; i++)
+            for (int i = 0; i < totalBiomes; i++)
             {
                 //initial randomized
                 randX = random.Next(Convert.ToInt32(minDistance / 2), Convert.ToInt32((mapSizeX - minDistance / 2)));
@@ -135,22 +140,24 @@ namespace Manage.Compute
                         j = -1;
                     }
                 }
-                biomeType = i;
+                biomeType = i+1;
                 //resolves biomes to possible numbers. ie for 5 biomes, numbers 6-10 will become 1-5 when there are 2 of each biome. This allows for a single iteration
                 for (int j = 1; j <= biomeRepeat; j++)
                 {
                     //test which biome repeat we are on
-                    if ((j - 1) * biomeNum < i && j * biomeNum >= i)
+                    if ((j - 1) * biomeNum < (i+1) && j * biomeNum >= (i+1))
                     {
                         //subtract to get number from 1 to number of biomes
                         biomeType -= (j - 1) * biomeNum;
                     }
                 }
+                blocks[randX, randY].setStart();
+                blocks[randX, randY].setBiome(biomeType);
                 //add start point to tracking array
-                startPts[i - 1, 0] = randX;
-                startPts[i - 1, 1] = randY;
+                startPts[i, 0] = randX;
+                startPts[i, 1] = randY;
                 //add biome start point to map
-                mapArr[randX, randY] = (biomeType);
+            //    mapArr[randX, randY] = (biomeType);
             }
 
             //expand biomes from start point
@@ -163,7 +170,7 @@ namespace Manage.Compute
                     for (int j = 0; j < mapSizeY; j++)
                     {
                         //current chunk's biome
-                        current = mapArr[i, j];
+                        current = blocks[i, j].getBiomeType();
                         //if the chunk is not water
                         if(current != 0)
                         {
@@ -186,25 +193,61 @@ namespace Manage.Compute
                             //if statement also makes sure chunk will not attempt to place out of the bounds of the map array
                             if (direction == 0 && ((i + 1) < mapSizeX))
                             {
-                                if (mapArr[i + 1, j] == 0)
-                                    mapArr[i + 1, j] = current;     //place chunk to right
+                                if (blocks[i + 1, j].getBiomeType() == 0)
+                                    blocks[i + 1, j].setBiome(current);     //place chunk to right
                             }
                             else if (direction == 1 && ((i - 1) >= 0))
                             {
-                                if (mapArr[i - 1, j] == 0)
-                                    mapArr[i - 1, j] = current;     //place chunk to left
+                                if (blocks[i - 1, j].getBiomeType() == 0)
+                                    blocks[i - 1, j].setBiome(current);     //place chunk to left
                             }
                             else if (direction == 2 && ((j + 1) < mapSizeY))
                             {
-                                if (mapArr[i, j + 1] == 0)  
-                                    mapArr[i, j + 1] = current;     //place chunk down
+                                if (blocks[i, j + 1].getBiomeType() == 0)  
+                                    blocks[i, j + 1].setBiome(current);     //place chunk down
                             }
                             else if (direction == 3 && ((j - 1) >= 0))
                             {
-                                if (mapArr[i, j - 1] == 0)
-                                    mapArr[i, j - 1] = current;     //place chunk up
+                                if (blocks[i, j - 1].getBiomeType() == 0)
+                                    blocks[i, j - 1].setBiome(current);     //place chunk up
                             }
                         }
+                    }
+                }
+            }
+
+            for (int i = 0; i < mapSizeY; i++)
+            {
+                for (int j = 0; j < mapSizeX; j++)
+                {
+                    if (blocks[i, j].getBiomeType() == 0)
+                    {
+                        blocks[i, j].setTexture(water);
+                    }
+                    //if 1, chunk has grass texture
+                    else if (blocks[i, j].getBiomeType() == 1)
+                    {
+                        blocks[i, j].setTexture(grass);
+                    }
+                    //if 2, chunk has forest texture
+                    else if (blocks[i, j].getBiomeType() == 2)
+                    {
+                        blocks[i, j].setTexture(forest);
+                    }
+                    //if 3, chunk has sand texture
+                    else if (blocks[i, j].getBiomeType() == 3)
+                    {
+                        blocks[i, j].setTexture(sand);
+                    }
+                    //if 4, chunk has mountains texture
+                    else if (blocks[i, j].getBiomeType() == 4)
+                    {
+                        blocks[i, j].setTexture(mountains);
+                    }
+                    //if 5, chunk has snow texture
+                    else if (blocks[i, j].getBiomeType() == 5)
+                    {
+                        blocks[i, j].setTexture(snow);
                     }
                 }
             }
@@ -278,7 +321,7 @@ namespace Manage.Compute
             minDistance = 2;
 
             //determine size of feature array based on size of map
-            features = new Texture2D[mapSizeX, mapSizeY];
+            // = new Texture2D[mapSizeX, mapSizeY];
 
             //generate features
             for (int i = 0; i < passes; i++)
@@ -292,7 +335,7 @@ namespace Manage.Compute
                     for (int k = 0; k < mapSizeY; k++)
                     {
                         //if a feature exists, test it
-                        if (features[j, k] != null)
+                        if (blocks[j, k].getFeature() != null)
                         {
                             //calculate distance from existing start point, formula    d = sqrt((x2-x1)^2 + (y2-y1)^2)
                             distance = Math.Sqrt(Math.Pow(Convert.ToDouble(randX - j), 2.0) + Math.Pow(Convert.ToDouble(randY - k), 2.0));
@@ -310,7 +353,7 @@ namespace Manage.Compute
                     }
                 }
                 //biome of current random position
-                biomeType = mapArr[randX, randY];
+                biomeType = blocks[randX, randY].getBiomeType();
                 //random number holder
                 int feat;
                 //by biome type
@@ -320,115 +363,115 @@ namespace Manage.Compute
                         feat = random.Next(0, 120);     //generate a random number 
                         if (feat >= 0 && feat < 0 + boatChance)     //determine if and what feature to place
                         {
-                            features[randX, randY] = boat;
+                            blocks[randX, randY].setFeature(boat,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + wavesChance)
                         {
-                            features[randX, randY] = waves;
+                            blocks[randX, randY].setFeature(waves,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + waves2Chance)
                         {
-                            features[randX, randY] = waves2;
+                            blocks[randX, randY].setFeature(waves2,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + waves3Chance)
                         {
-                            features[randX, randY] = waves3;
+                            blocks[randX, randY].setFeature(waves3,1.0);
                         }
                         else if (feat >= 40 && feat < 40 + monsterChance)
                         {
-                            features[randX, randY] = monster;
+                            blocks[randX, randY].setFeature(monster,1.0);
                         }
                         else if (feat >= 50 && feat < 50 + islandChance)
                         {
-                            features[randX, randY] = island;
+                            blocks[randX, randY].setFeature(island,1.0);
                         }
                         break;
                     case 1:
                         feat = random.Next(0, 50);      //generate a random number 
                         if (feat >= 0 && feat < 0 + grass1Chance)   //determine if and what feature to place
                         {
-                            features[randX, randY] = grass1;
+                            blocks[randX, randY].setFeature(grass1,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + hillChance)
                         {
-                            features[randX, randY] = hill;
+                            blocks[randX, randY].setFeature(hill,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + hill2Chance)
                         {
-                            features[randX, randY] = hill2;
+                            blocks[randX, randY].setFeature(hill2,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + hill3Chance)
                         {
-                            features[randX, randY] = hill3;
+                            blocks[randX, randY].setFeature(hill3,1.0);
                         }
                         else if (feat >= 40 && feat < 40 + house1Chance)
                         {
-                            features[randX, randY] = house1;
+                            blocks[randX, randY].setFeature(house1,1.0);
                         }
                         break;
                     case 2:
                         feat = random.Next(0, 40);      //generate a random number 
                         if (feat >= 0 && feat < 0 + forest1Chance)  //determine if and what feature to place
                         {
-                            features[randX, randY] = forest1;
+                            blocks[randX, randY].setFeature(forest1,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + forest2Chance)
                         {
-                            features[randX, randY] = forest2;
+                            blocks[randX, randY].setFeature(forest2,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + forest3Chance)
                         {
-                            features[randX, randY] = forest3;
+                            blocks[randX, randY].setFeature(forest3,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + forest4Chance)
                         {
-                            features[randX, randY] = forest4;
+                            blocks[randX, randY].setFeature(forest4,1.0);
                         }
                         break;
                     case 3:
                         feat = random.Next(0, 60);      //generate a random number 
                         if (feat >= 0 && feat < 0 + cactiChance)    //determine if and what feature to place
                         {
-                            features[randX, randY] = cacti;
+                            blocks[randX, randY].setFeature(cacti,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + cactusChance)
                         {
-                            features[randX, randY] = cactus;
+                            blocks[randX, randY].setFeature(cactus,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + desertChance)
                         {
-                            features[randX, randY] = desert;
+                            blocks[randX, randY].setFeature(desert,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + desertRockChance)
                         {
-                            features[randX, randY] = desertRock;
+                            blocks[randX, randY].setFeature(desertRock,1.0);
                         }
                         else if (feat >= 40 && feat < 40 + duneChance)
                         {
-                            features[randX, randY] = dune;
+                            blocks[randX, randY].setFeature(dune,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + desertHillChance)
                         {
-                            features[randX, randY] = desertHill;
+                            blocks[randX, randY].setFeature(desertHill,1.0);
                         }
                         break;
                     case 4:
                         feat = random.Next(0, 40);      //generate a random number 
                         if (feat >= 0 && feat < 0 + mountain1Chance)    //determine if and what feature to place
                         {
-                            features[randX, randY] = mountain1;
+                            blocks[randX, randY].setFeature(mountain1,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + mountain2Chance)
                         {
-                            features[randX, randY] = mountain2;
+                            blocks[randX, randY].setFeature(mountain2,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + mountain3Chance)
                         {
-                            features[randX, randY] = mountain3;
+                            blocks[randX, randY].setFeature(mountain3,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + mountain4Chance)
                         {
-                            features[randX, randY] = mountain4;
+                            blocks[randX, randY].setFeature(mountain4,1.0);
                         }
                         break;
 
@@ -436,21 +479,21 @@ namespace Manage.Compute
                         feat = random.Next(0, 20);      //generate a random number 
                         if (feat >= 0 && feat < 0 + iceHillChance)      //determine if and what feature to place
                         {
-                            features[randX, randY] = iceHill;
+                            blocks[randX, randY].setFeature(iceHill,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + iceHill2Chance)
                         {
-                            features[randX, randY] = iceHill2;
+                            blocks[randX, randY].setFeature(iceHill2,1.0);
                         }
                         break;
                 }
-                //add biome start point to map
-                mapArr[randX, randY] = (biomeType);
+                //add biome point to map
+                blocks[randX, randY].setBiome(biomeType);
             }
             //add cities to features. Will be 
             for(int i = 0; i < cityNum; i++)
             {
-                features[cityArr[i, 0], cityArr[i, 1]] = city;
+                blocks[cityArr[i, 0], cityArr[i, 1]].setFeature(city,1.2);
             }
         }
 
@@ -461,7 +504,7 @@ namespace Manage.Compute
             {
                 for (int j = 0; j < ySize; j++)
                 {
-                    System.Diagnostics.Debug.Write(string.Format("{0}", mapArr[i, j]));
+                    System.Diagnostics.Debug.Write(string.Format("{0}", blocks[i, j].getBiomeType()));
                 }
                 System.Diagnostics.Debug.Write(Environment.NewLine);
             }
@@ -570,88 +613,69 @@ namespace Manage.Compute
             double ySize = (Convert.ToDouble(dispSizeY) - (Convert.ToDouble(startY) * 2)) / Convert.ToDouble(mapBlocksY);
             //These 4 are calculated using xSize and ySize doubles for each chunk on the fly so that the map size does not have to
             //be smaller or larger than intended due to a set number of chunks of a set size
-            int xPosInt = Convert.ToInt32(xPos);
-            int yPosInt = Convert.ToInt32(yPos);
-            int xSizeInt = Convert.ToInt32(xSize);
-            int ySizeInt = Convert.ToInt32(ySize);
-
-
-
-            //a table to look up the pixel position of the upper left corner of map blocks
-            if (positions == null) {
-                positions = new Vector2[mapSizeX, mapSizeY];
-                generatingPos = true;
-            }
+            int xPosInt = 0;
+            int yPosInt = 0;
+            int xSizeInt = 0;
+            int ySizeInt = 0;
+            int xPosPrev = 0;
+            int yPosPrev = 0;
+            int xSizePrev = 0;
+            int ySizePrev = 0;
 
             mapSprite.Begin();
-            blockRects = new Rectangle[mapSizeX, mapSizeY];
             //for each chunk on map
             for (int i = zoomStartY; i < zoomSubY; i++) 
             {
                 for (int j = zoomStartX; j < zoomSubX; j++)
                 {
-                    //resolve size and position to integer (always shrinks to avoid gaps between chunks, 
-                    //this is a product of double to int conversion but works to my advantage)
+                    //resolve size and position to integer
                     xPosInt = Convert.ToInt32(xPos);
                     yPosInt = Convert.ToInt32(yPos);
-                    if (generatingPos)
-                    {
-                        positions[i, j].X = xPosInt;
-                        positions[i, j].Y = yPosInt;
-                    }
-                    xSizeInt = Convert.ToInt32(xSize) + 1;
-                    ySizeInt = Convert.ToInt32(ySize) + 1;
+                    xSizeInt = Convert.ToInt32(xSize);
+                    ySizeInt = Convert.ToInt32(ySize);
 
-                    blockRects[i, j] = new Rectangle(xPosInt, yPosInt, xSizeInt, ySizeInt);
+                    if (yPosInt > yPosPrev + ySizePrev)
+                    {
+                        yPosInt -= 1;
+                        ySizeInt += 1;
+                    }
+                    if (xPosInt > xPosPrev + xSizePrev)
+                    {
+                        xPosInt -= 1;
+                        xSizeInt += 1;
+                    }
+                    if (yPosInt < yPosPrev + ySizePrev)
+                    {
+                        yPosInt += 1;
+                        ySizeInt -= 1;
+                    }
+                    if (xPosInt < xPosPrev + xSizePrev)
+                    {
+                        xPosInt += 1;
+                        xSizeInt -= 1;
+                    }
+
+                    blocks[i, j].setRect(xPosInt, yPosInt, xSizeInt, ySizeInt);
+
                     //if we are calculating the position of a chunk that happens to be a biome start point, 
                     //add the position to the start points array in slots 2 and 3 for x and y
                     //iterate through startpoints
-                    for (int k = 0; k < totalBiomes; k++)
-                    {
-                        //test for match
-                        if (startPts[k,0] == i && startPts[k,1] == j) 
-                        {
-                            //add physical location
-                            startPts[k, 2] = xPosInt;
-                            startPts[k, 3] = yPosInt;
-                        }
-                    }
-                    //if 0, chunk has water texture
-                    if (mapArr[i,j] == 0)
-                    {
-                        mapSprite.Draw(water, new Rectangle(xPosInt, yPosInt, xSizeInt, ySizeInt), Color.White);
-                    }
-                    //if 1, chunk has grass texture
-                    else if (mapArr[i, j] == 1)
-                    {
-                        mapSprite.Draw(grass, new Rectangle(xPosInt, yPosInt, xSizeInt, ySizeInt), Color.White);
-                    }
-                    //if 2, chunk has forest texture
-                    else if (mapArr[i, j] == 2)
-                    {
-                        mapSprite.Draw(forest, new Rectangle(xPosInt, yPosInt, xSizeInt, ySizeInt), Color.White);
-                    }
-                    //if 3, chunk has sand texture
-                    else if (mapArr[i, j] == 3)
-                    {
-                        mapSprite.Draw(sand, new Rectangle(xPosInt, yPosInt, xSizeInt, ySizeInt), Color.White);
-                    }
-                    //if 4, chunk has mountains texture
-                    else if (mapArr[i, j] == 4)
-                    {
-                        mapSprite.Draw(mountains, new Rectangle(xPosInt, yPosInt, xSizeInt, ySizeInt), Color.White);
-                    }
-                    //if 5, chunk has snow texture
-                    else if (mapArr[i, j] == 5)
-                    {
-                        mapSprite.Draw(snow, new Rectangle(xPosInt, yPosInt, xSizeInt, ySizeInt), Color.White);
-                    }
-                    //if anything else, no chunk is drawn (error) may add default missing texture later
+
+                    blocks[i, j].DrawBlock(mapSprite);
 
                     xPos += xSize;      //calculate x of next chunk
+
+                    xSizePrev = xSizeInt;
+                    xPosPrev = xPosInt;
                 }
                 yPos += ySize;          //calculate y of next chunk
                 xPos = startX;          //reset next line of chunks to left
+
+                ySizePrev = ySizeInt;
+                yPosPrev = yPosInt;
+                xSizePrev = 0;
+                xPosPrev = 0;
+
             }
 
             //determine the size of map features
@@ -668,26 +692,12 @@ namespace Manage.Compute
                 size = Convert.ToInt32(Convert.ToDouble(size) * .6);
             }
             size = Convert.ToInt32(Convert.ToDouble(size) / (Convert.ToDouble(zoomPct) / 100.0));
-            int printSize;
             //draw map features
             for (int i = zoomStartY; i < zoomSubY; i++) //for each x
             {
                 for (int j = zoomStartX; j < zoomSubX; j++) //for each y
                 {
-                    if(features[i,j] != null) //if there is a feature on this block
-                    {
-                        printSize = size;
-                        if (features[i, j] == city && dispCities)
-                        {
-                            printSize = Convert.ToInt32(Convert.ToDouble(size) * 1.2);
-                            mapSprite.Draw(features[i, j], new Rectangle(Convert.ToInt32(positions[i, j].X) - printSize / 2, Convert.ToInt32(positions[i, j].Y) - printSize / 2, printSize, printSize), Color.White);
-                        }
-                        else
-                        {
-                            //draw a feasture here. Get pixel position from positions, centering using size.
-                            mapSprite.Draw(features[i, j], new Rectangle(Convert.ToInt32(positions[i, j].X) - printSize / 2, Convert.ToInt32(positions[i, j].Y) - printSize / 2, printSize, printSize), Color.White);
-                        }
-                    }
+                    blocks[i, j].DrawFeature(size, mapSprite);  //if there is a feature on this block
                 }
             }
             
@@ -780,6 +790,7 @@ namespace Manage.Compute
         private MouseState currentMouse;
         private bool isHovering;
         private MouseState previousMouse;
+        /*
         public void highlightBlock(SpriteBatch spriteBatch)
         {
             previousMouse = currentMouse;
@@ -833,18 +844,18 @@ namespace Manage.Compute
                         }
 
 
-                        /*
+                        
                         if (currentMouse.LeftButton == ButtonState.Released && previousMouse.LeftButton == ButtonState.Pressed)
                         {
                             Click?.Invoke(this, new EventArgs()); ;
                         }
-                        */
+                        
                     }
                 }
             }
             spriteBatch.End();
+        } */
 
-        }
     }
 }
 

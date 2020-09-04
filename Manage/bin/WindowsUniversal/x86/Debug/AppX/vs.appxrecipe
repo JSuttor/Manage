@@ -30,13 +30,13 @@
     <AppXManifest Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-03T03:54:56.321</Modified>
+      <Modified>2020-09-04T05:11:57.345</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Manage.exe">
       <PackagePath>entrypoint\Manage.exe</PackagePath>
-      <Modified>2020-09-03T03:54:54.053</Modified>
+      <Modified>2020-09-04T05:11:55.080</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\docto\.nuget\packages\monogame.framework.windowsuniversal\3.8.0.1641\lib\uap10.0\MonoGame.Framework.dll">
       <PackagePath>MonoGame.Framework.dll</PackagePath>
@@ -274,11 +274,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-08-30T02:58:03.465</Modified>
+      <Modified>2020-09-04T03:56:48.205</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\Manage.exe">
       <PackagePath>Manage.exe</PackagePath>
-      <Modified>2020-09-03T03:54:56.318</Modified>
+      <Modified>2020-09-04T05:11:57.342</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
