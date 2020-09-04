@@ -6,7 +6,7 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "E:/projects/Manage/Manage/Content/Map/boat.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/boat.xnb","TextureProcessor","Texture2DContent",20034,160085,0.1753696
 "E:/projects/Manage/Manage/Content/Map/cacti.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/cacti.xnb","TextureProcessor","Texture2DContent",10849,160085,0.0074963
 "E:/projects/Manage/Manage/Content/Map/cactus.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/cactus.xnb","TextureProcessor","Texture2DContent",22482,160085,0.0055009
-"E:/projects/Manage/Manage/Content/Map/City.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/City.xnb","TextureProcessor","Texture2DContent",9868,120085,0.15842
+"E:/projects/Manage/Manage/Content/Map/City.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/City.xnb","TextureProcessor","Texture2DContent",17590,160085,0.1976681
 "E:/projects/Manage/Manage/Content/Map/desert.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/desert.xnb","TextureProcessor","Texture2DContent",16166,160085,0.0223494
 "E:/projects/Manage/Manage/Content/Map/desertHill.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/desertHill.xnb","TextureProcessor","Texture2DContent",3240,160085,0.1404601
 "E:/projects/Manage/Manage/Content/Map/desertRock.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Map/desertRock.xnb","TextureProcessor","Texture2DContent",28931,160085,0.0138844

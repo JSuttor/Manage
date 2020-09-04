@@ -40,6 +40,7 @@ namespace Manage.Compute
         int[,] startPts;                //populated with beginning points for biome gen
         Texture2D[,] features;          //map visual features
         Vector2[,] positions;           //actual position of every map block
+        Rectangle[,] blockRects;
 
 
 
@@ -446,6 +447,11 @@ namespace Manage.Compute
                 //add biome start point to map
                 mapArr[randX, randY] = (biomeType);
             }
+            //add cities to features. Will be 
+            for(int i = 0; i < cityNum; i++)
+            {
+                features[cityArr[i, 0], cityArr[i, 1]] = city;
+            }
         }
 
         //purely for testing purposes, put an integer representation of the biome map in the console
@@ -469,7 +475,7 @@ namespace Manage.Compute
         int zoomSubY;
 
         //display map to screen in position and size passed
-        public void displayMap(int startX, int startY, int dispSizeX, int dispSizeY, int zoomPct, ref Vector2 moveMap, SpriteBatch mapSprite)
+        public void displayMap(int startX, int startY, int dispSizeX, int dispSizeY, int zoomPct, ref Vector2 moveMap, bool dispCities, SpriteBatch mapSprite)
         {
             //define the map ratio. This will later allow different ratios in different areas if passed
             double xRatio = 15;             //x per yRatio
@@ -491,13 +497,13 @@ namespace Manage.Compute
                 dispSizeX = Convert.ToInt32(Convert.ToDouble(dispSizeY) * xRatio / yRatio);
             }
 
-
+            //determine blocks to be shown given zoom
             zoomStartX = mapSizeX - Convert.ToInt32(Convert.ToDouble(mapSizeX) * (Convert.ToDouble(zoomPct) / 100.0)) + Convert.ToInt32(mapCenter.X);
             zoomStartY = mapSizeX - Convert.ToInt32(Convert.ToDouble(mapSizeY) * (Convert.ToDouble(zoomPct) / 100.0)) + Convert.ToInt32(mapCenter.Y);
             zoomSubX = Convert.ToInt32(Convert.ToDouble(mapSizeX) * (Convert.ToDouble(zoomPct) / 100.0)) + Convert.ToInt32(mapCenter.X);
             zoomSubY = Convert.ToInt32(Convert.ToDouble(mapSizeY) * (Convert.ToDouble(zoomPct) / 100.0)) + Convert.ToInt32(mapCenter.Y);
 
-
+            //on new map generation, set map display center to 0
             if (initCenter)
             {
                 mapCenter.X = 0;
@@ -506,6 +512,7 @@ namespace Manage.Compute
 
             }
 
+            //determine how to pan map when zoomed
             if(moveMap.X == -1 && zoomSubX < mapSizeX)
             {
                 mapCenter.X++;
@@ -525,9 +532,11 @@ namespace Manage.Compute
             }
             moveMap.Y = 0;
 
+            //number of blocks given zoom
             mapBlocksX = zoomSubX - zoomStartX;
             mapBlocksY = zoomSubY - zoomStartY;
 
+            //pan map if able
             if(zoomSubX > mapSizeX)
             {
                 zoomStartX -= (zoomSubX - mapSizeX);
@@ -575,7 +584,7 @@ namespace Manage.Compute
             }
 
             mapSprite.Begin();
-
+            blockRects = new Rectangle[mapSizeX, mapSizeY];
             //for each chunk on map
             for (int i = zoomStartY; i < zoomSubY; i++) 
             {
@@ -592,6 +601,8 @@ namespace Manage.Compute
                     }
                     xSizeInt = Convert.ToInt32(xSize) + 1;
                     ySizeInt = Convert.ToInt32(ySize) + 1;
+
+                    blockRects[i, j] = new Rectangle(xPosInt, yPosInt, xSizeInt, ySizeInt);
                     //if we are calculating the position of a chunk that happens to be a biome start point, 
                     //add the position to the start points array in slots 2 and 3 for x and y
                     //iterate through startpoints
@@ -657,6 +668,7 @@ namespace Manage.Compute
                 size = Convert.ToInt32(Convert.ToDouble(size) * .6);
             }
             size = Convert.ToInt32(Convert.ToDouble(size) / (Convert.ToDouble(zoomPct) / 100.0));
+            int printSize;
             //draw map features
             for (int i = zoomStartY; i < zoomSubY; i++) //for each x
             {
@@ -664,21 +676,20 @@ namespace Manage.Compute
                 {
                     if(features[i,j] != null) //if there is a feature on this block
                     {
-                        //draw a feasture here. Get pixel position from positions, centering using size.
-                        mapSprite.Draw(features[i,j], new Rectangle(Convert.ToInt32(positions[i,j].X)-size/2, Convert.ToInt32(positions[i, j].Y)-size/2, size, size), Color.White);
+                        printSize = size;
+                        if (features[i, j] == city && dispCities)
+                        {
+                            printSize = Convert.ToInt32(Convert.ToDouble(size) * 1.2);
+                            mapSprite.Draw(features[i, j], new Rectangle(Convert.ToInt32(positions[i, j].X) - printSize / 2, Convert.ToInt32(positions[i, j].Y) - printSize / 2, printSize, printSize), Color.White);
+                        }
+                        else
+                        {
+                            //draw a feasture here. Get pixel position from positions, centering using size.
+                            mapSprite.Draw(features[i, j], new Rectangle(Convert.ToInt32(positions[i, j].X) - printSize / 2, Convert.ToInt32(positions[i, j].Y) - printSize / 2, printSize, printSize), Color.White);
+                        }
                     }
                 }
             }
-
-            /*
-            //for each city
-            for (int i = 0; i < (cityNum); i++)
-            {
-                //draw a little city. I'll need to figure out how to make these into buttons or place an 
-                //invisible button over them later. also dynamic sizing will be added
-                mapSprite.Draw(city, new Rectangle(cityArr[i, 2], cityArr[i, 3], 30, 30), Color.White);
-            }
-            */
             
             mapSprite.End();
         }
@@ -764,6 +775,75 @@ namespace Manage.Compute
             waves3 = Content.Load<Texture2D>("map/waves3");
             boat = Content.Load<Texture2D>("map/boat");
             island = Content.Load<Texture2D>("map/island");
+        }
+
+        private MouseState currentMouse;
+        private bool isHovering;
+        private MouseState previousMouse;
+        public void highlightBlock(SpriteBatch spriteBatch)
+        {
+            previousMouse = currentMouse;
+            currentMouse = Mouse.GetState();
+            var mouseRectangle = new Rectangle(currentMouse.X, currentMouse.Y, 1, 1);
+            isHovering = false;
+            bool alreadyDetected = false;
+            spriteBatch.Begin();
+
+            for (int i = 0; i < mapSizeY; i++)
+            {
+                for (int j = 0; j < mapSizeX; j++)
+                {
+                    if (mouseRectangle.Intersects(blockRects[i,j]) && alreadyDetected == false)
+                    {
+                        isHovering = true;
+                        if (mapArr[i, j] == 0)
+                        {
+                            spriteBatch.Draw(water, blockRects[i, j], Color.LightGray);
+                            alreadyDetected = true;
+                        }
+                        //if 1, chunk has grass texture
+                        else if (mapArr[i, j] == 1)
+                        {
+                            spriteBatch.Draw(grass, blockRects[i, j], Color.LightGray);
+                            alreadyDetected = true;
+                        }
+                        //if 2, chunk has forest texture
+                        else if (mapArr[i, j] == 2)
+                        {
+                            spriteBatch.Draw(forest, blockRects[i, j], Color.LightGray);
+                            alreadyDetected = true;
+                        }
+                        //if 3, chunk has sand texture
+                        else if (mapArr[i, j] == 3)
+                        {
+                            spriteBatch.Draw(sand, blockRects[i, j], Color.LightGray);
+                            alreadyDetected = true;
+                        }
+                        //if 4, chunk has mountains texture
+                        else if (mapArr[i, j] == 4)
+                        {
+                            spriteBatch.Draw(mountains, blockRects[i, j], Color.LightGray);
+                            alreadyDetected = true;
+                        }
+                        //if 5, chunk has snow texture
+                        else if (mapArr[i, j] == 5)
+                        {
+                            spriteBatch.Draw(snow, blockRects[i, j], Color.LightGray);
+                            alreadyDetected = true;
+                        }
+
+
+                        /*
+                        if (currentMouse.LeftButton == ButtonState.Released && previousMouse.LeftButton == ButtonState.Pressed)
+                        {
+                            Click?.Invoke(this, new EventArgs()); ;
+                        }
+                        */
+                    }
+                }
+            }
+            spriteBatch.End();
+
         }
     }
 }

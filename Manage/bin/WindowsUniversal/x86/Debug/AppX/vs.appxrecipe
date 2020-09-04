@@ -30,13 +30,13 @@
     <AppXManifest Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-01T04:47:22.719</Modified>
+      <Modified>2020-09-03T03:54:56.321</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Manage.exe">
       <PackagePath>entrypoint\Manage.exe</PackagePath>
-      <Modified>2020-09-01T04:47:20.166</Modified>
+      <Modified>2020-09-03T03:54:54.053</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\docto\.nuget\packages\monogame.framework.windowsuniversal\3.8.0.1641\lib\uap10.0\MonoGame.Framework.dll">
       <PackagePath>MonoGame.Framework.dll</PackagePath>
@@ -146,7 +146,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\City.xnb">
       <PackagePath>Content/Map\City.xnb</PackagePath>
-      <Modified>2020-08-15T15:42:01.287</Modified>
+      <Modified>2020-09-02T01:53:00.976</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Map\desert.xnb">
       <PackagePath>Content/Map\desert.xnb</PackagePath>
@@ -278,7 +278,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\Manage.exe">
       <PackagePath>Manage.exe</PackagePath>
-      <Modified>2020-09-01T04:47:22.716</Modified>
+      <Modified>2020-09-03T03:54:56.318</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

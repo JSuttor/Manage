@@ -92,16 +92,16 @@ namespace Manage
             };
             var zoomInButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(1000, 0),
-                Width = 64,
-                Height = 64,
+                Position = new Vector2(1268, 0),
+                Width = 32,
+                Height = 32,
                 Text = "+",
             };
             var zoomOutButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
             {
-                Position = new Vector2(1100, 0),
-                Width = 64,
-                Height = 64,
+                Position = new Vector2(1332, 0),
+                Width = 32,
+                Height = 32,
                 Text = "-",
             };
             var upButton = new Button(Content.Load<Texture2D>("Controls/basicButton"), Content.Load<SpriteFont>("Fonts/Font"))
@@ -244,6 +244,7 @@ namespace Manage
                         component.Draw(gameTime, spriteBatch);
                     break;
                 case GameState.newGame:
+                    
                     foreach (var component in newGameScreenComponents)
                         component.Update(gameTime);
                     break;
@@ -291,6 +292,7 @@ namespace Manage
                 component.Draw(gameTime, spriteBatch);
             spriteBatch.End();
         }
+        bool dispCities;
         protected void DrawNewGame(GameTime gameTime)
         {
             spriteBatch.Begin();
@@ -299,7 +301,11 @@ namespace Manage
             spriteBatch.End();
 
             if (mapExists)
-                gameMap.displayMap(100, 100, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, zoomPct, ref mapCenter, mapSprite);
+            {
+                dispCities = true;
+                gameMap.displayMap(100, 100, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, zoomPct, ref mapCenter, dispCities, mapSprite);
+                gameMap.highlightBlock(spriteBatch);
+            }
         }
         protected void DrawMainGame(GameTime gameTime)
         {
