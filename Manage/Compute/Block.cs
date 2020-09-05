@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Manage.Compute
 {
-    class Block : Component
+    class Block
     {
         Rectangle blockRect;
         double sizeMult;
@@ -28,39 +28,40 @@ namespace Manage.Compute
         {
             biomeTexture = water;
         }
-
-        public void setRect(int xPos, int yPos, int xSize, int ySize)
+        public void SetRect(int xPos, int yPos, int xSize, int ySize)
         {
             blockRect = new Rectangle(xPos, yPos, xSize, ySize);
             position = new Vector2(xPos, yPos);
         }
-
-        public void setStart()
+        public void SetStart()
         {
             startPoint = true;
         }
-
-        public void setBiome(int biomeType)
+        public void SetBiome(int biomeType)
         {
             this.biomeType = biomeType;
         }
-
-        public void setFeature(Texture2D feature, double sizeMult)
+        public void SetFeature(Texture2D feature, double sizeMult)
         {
             this.feature = feature;
             this.sizeMult = sizeMult;
         }
-
-        public void setTexture(Texture2D biomeTexture)
+        public void SetTexture(Texture2D biomeTexture)
         {
             this.biomeTexture = biomeTexture;
         }
-        
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public bool getStart()
         {
-
+            return startPoint;
         }
-
+        public int GetBiomeType()
+        {
+            return biomeType;
+        }
+        public Texture2D GetFeature()
+        {
+            return feature;
+        }
         public void DrawBlock(SpriteBatch spriteBatch)
         {
             previousMouse = currentMouse;
@@ -93,20 +94,5 @@ namespace Manage.Compute
             }
         }
 
-        public int getBiomeType()
-        {
-            return biomeType;
-        }
-
-        public Texture2D getFeature()
-        {
-            return feature;
-        }
-
-
-        public override void Update(GameTime gameTime)
-        {
-
-        }
     }
 }

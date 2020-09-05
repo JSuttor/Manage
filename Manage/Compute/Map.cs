@@ -151,8 +151,8 @@ namespace Manage.Compute
                         biomeType -= (j - 1) * biomeNum;
                     }
                 }
-                blocks[randX, randY].setStart();
-                blocks[randX, randY].setBiome(biomeType);
+                blocks[randX, randY].SetStart();
+                blocks[randX, randY].SetBiome(biomeType);
                 //add start point to tracking array
                 startPts[i, 0] = randX;
                 startPts[i, 1] = randY;
@@ -170,7 +170,7 @@ namespace Manage.Compute
                     for (int j = 0; j < mapSizeY; j++)
                     {
                         //current chunk's biome
-                        current = blocks[i, j].getBiomeType();
+                        current = blocks[i, j].GetBiomeType();
                         //if the chunk is not water
                         if(current != 0)
                         {
@@ -193,23 +193,23 @@ namespace Manage.Compute
                             //if statement also makes sure chunk will not attempt to place out of the bounds of the map array
                             if (direction == 0 && ((i + 1) < mapSizeX))
                             {
-                                if (blocks[i + 1, j].getBiomeType() == 0)
-                                    blocks[i + 1, j].setBiome(current);     //place chunk to right
+                                if (blocks[i + 1, j].GetBiomeType() == 0)
+                                    blocks[i + 1, j].SetBiome(current);     //place chunk to right
                             }
                             else if (direction == 1 && ((i - 1) >= 0))
                             {
-                                if (blocks[i - 1, j].getBiomeType() == 0)
-                                    blocks[i - 1, j].setBiome(current);     //place chunk to left
+                                if (blocks[i - 1, j].GetBiomeType() == 0)
+                                    blocks[i - 1, j].SetBiome(current);     //place chunk to left
                             }
                             else if (direction == 2 && ((j + 1) < mapSizeY))
                             {
-                                if (blocks[i, j + 1].getBiomeType() == 0)  
-                                    blocks[i, j + 1].setBiome(current);     //place chunk down
+                                if (blocks[i, j + 1].GetBiomeType() == 0)  
+                                    blocks[i, j + 1].SetBiome(current);     //place chunk down
                             }
                             else if (direction == 3 && ((j - 1) >= 0))
                             {
-                                if (blocks[i, j - 1].getBiomeType() == 0)
-                                    blocks[i, j - 1].setBiome(current);     //place chunk up
+                                if (blocks[i, j - 1].GetBiomeType() == 0)
+                                    blocks[i, j - 1].SetBiome(current);     //place chunk up
                             }
                         }
                     }
@@ -220,34 +220,34 @@ namespace Manage.Compute
             {
                 for (int j = 0; j < mapSizeX; j++)
                 {
-                    if (blocks[i, j].getBiomeType() == 0)
+                    if (blocks[i, j].GetBiomeType() == 0)
                     {
-                        blocks[i, j].setTexture(water);
+                        blocks[i, j].SetTexture(water);
                     }
                     //if 1, chunk has grass texture
-                    else if (blocks[i, j].getBiomeType() == 1)
+                    else if (blocks[i, j].GetBiomeType() == 1)
                     {
-                        blocks[i, j].setTexture(grass);
+                        blocks[i, j].SetTexture(grass);
                     }
                     //if 2, chunk has forest texture
-                    else if (blocks[i, j].getBiomeType() == 2)
+                    else if (blocks[i, j].GetBiomeType() == 2)
                     {
-                        blocks[i, j].setTexture(forest);
+                        blocks[i, j].SetTexture(forest);
                     }
                     //if 3, chunk has sand texture
-                    else if (blocks[i, j].getBiomeType() == 3)
+                    else if (blocks[i, j].GetBiomeType() == 3)
                     {
-                        blocks[i, j].setTexture(sand);
+                        blocks[i, j].SetTexture(sand);
                     }
                     //if 4, chunk has mountains texture
-                    else if (blocks[i, j].getBiomeType() == 4)
+                    else if (blocks[i, j].GetBiomeType() == 4)
                     {
-                        blocks[i, j].setTexture(mountains);
+                        blocks[i, j].SetTexture(mountains);
                     }
                     //if 5, chunk has snow texture
-                    else if (blocks[i, j].getBiomeType() == 5)
+                    else if (blocks[i, j].GetBiomeType() == 5)
                     {
-                        blocks[i, j].setTexture(snow);
+                        blocks[i, j].SetTexture(snow);
                     }
                 }
             }
@@ -306,7 +306,6 @@ namespace Manage.Compute
             if(mapSize == 1)
             {
                 passes = 1500;
-                
             }
             else if (mapSize == 2)
             {
@@ -335,7 +334,7 @@ namespace Manage.Compute
                     for (int k = 0; k < mapSizeY; k++)
                     {
                         //if a feature exists, test it
-                        if (blocks[j, k].getFeature() != null)
+                        if (blocks[j, k].GetFeature() != null)
                         {
                             //calculate distance from existing start point, formula    d = sqrt((x2-x1)^2 + (y2-y1)^2)
                             distance = Math.Sqrt(Math.Pow(Convert.ToDouble(randX - j), 2.0) + Math.Pow(Convert.ToDouble(randY - k), 2.0));
@@ -353,7 +352,7 @@ namespace Manage.Compute
                     }
                 }
                 //biome of current random position
-                biomeType = blocks[randX, randY].getBiomeType();
+                biomeType = blocks[randX, randY].GetBiomeType();
                 //random number holder
                 int feat;
                 //by biome type
@@ -363,115 +362,115 @@ namespace Manage.Compute
                         feat = random.Next(0, 120);     //generate a random number 
                         if (feat >= 0 && feat < 0 + boatChance)     //determine if and what feature to place
                         {
-                            blocks[randX, randY].setFeature(boat,1.0);
+                            blocks[randX, randY].SetFeature(boat,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + wavesChance)
                         {
-                            blocks[randX, randY].setFeature(waves,1.0);
+                            blocks[randX, randY].SetFeature(waves,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + waves2Chance)
                         {
-                            blocks[randX, randY].setFeature(waves2,1.0);
+                            blocks[randX, randY].SetFeature(waves2,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + waves3Chance)
                         {
-                            blocks[randX, randY].setFeature(waves3,1.0);
+                            blocks[randX, randY].SetFeature(waves3,1.0);
                         }
                         else if (feat >= 40 && feat < 40 + monsterChance)
                         {
-                            blocks[randX, randY].setFeature(monster,1.0);
+                            blocks[randX, randY].SetFeature(monster,1.0);
                         }
                         else if (feat >= 50 && feat < 50 + islandChance)
                         {
-                            blocks[randX, randY].setFeature(island,1.0);
+                            blocks[randX, randY].SetFeature(island,1.0);
                         }
                         break;
                     case 1:
                         feat = random.Next(0, 50);      //generate a random number 
                         if (feat >= 0 && feat < 0 + grass1Chance)   //determine if and what feature to place
                         {
-                            blocks[randX, randY].setFeature(grass1,1.0);
+                            blocks[randX, randY].SetFeature(grass1,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + hillChance)
                         {
-                            blocks[randX, randY].setFeature(hill,1.0);
+                            blocks[randX, randY].SetFeature(hill,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + hill2Chance)
                         {
-                            blocks[randX, randY].setFeature(hill2,1.0);
+                            blocks[randX, randY].SetFeature(hill2,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + hill3Chance)
                         {
-                            blocks[randX, randY].setFeature(hill3,1.0);
+                            blocks[randX, randY].SetFeature(hill3,1.0);
                         }
                         else if (feat >= 40 && feat < 40 + house1Chance)
                         {
-                            blocks[randX, randY].setFeature(house1,1.0);
+                            blocks[randX, randY].SetFeature(house1,1.0);
                         }
                         break;
                     case 2:
                         feat = random.Next(0, 40);      //generate a random number 
                         if (feat >= 0 && feat < 0 + forest1Chance)  //determine if and what feature to place
                         {
-                            blocks[randX, randY].setFeature(forest1,1.0);
+                            blocks[randX, randY].SetFeature(forest1,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + forest2Chance)
                         {
-                            blocks[randX, randY].setFeature(forest2,1.0);
+                            blocks[randX, randY].SetFeature(forest2,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + forest3Chance)
                         {
-                            blocks[randX, randY].setFeature(forest3,1.0);
+                            blocks[randX, randY].SetFeature(forest3,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + forest4Chance)
                         {
-                            blocks[randX, randY].setFeature(forest4,1.0);
+                            blocks[randX, randY].SetFeature(forest4,1.0);
                         }
                         break;
                     case 3:
                         feat = random.Next(0, 60);      //generate a random number 
                         if (feat >= 0 && feat < 0 + cactiChance)    //determine if and what feature to place
                         {
-                            blocks[randX, randY].setFeature(cacti,1.0);
+                            blocks[randX, randY].SetFeature(cacti,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + cactusChance)
                         {
-                            blocks[randX, randY].setFeature(cactus,1.0);
+                            blocks[randX, randY].SetFeature(cactus,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + desertChance)
                         {
-                            blocks[randX, randY].setFeature(desert,1.0);
+                            blocks[randX, randY].SetFeature(desert,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + desertRockChance)
                         {
-                            blocks[randX, randY].setFeature(desertRock,1.0);
+                            blocks[randX, randY].SetFeature(desertRock,1.0);
                         }
                         else if (feat >= 40 && feat < 40 + duneChance)
                         {
-                            blocks[randX, randY].setFeature(dune,1.0);
+                            blocks[randX, randY].SetFeature(dune,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + desertHillChance)
                         {
-                            blocks[randX, randY].setFeature(desertHill,1.0);
+                            blocks[randX, randY].SetFeature(desertHill,1.0);
                         }
                         break;
                     case 4:
                         feat = random.Next(0, 40);      //generate a random number 
                         if (feat >= 0 && feat < 0 + mountain1Chance)    //determine if and what feature to place
                         {
-                            blocks[randX, randY].setFeature(mountain1,1.0);
+                            blocks[randX, randY].SetFeature(mountain1,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + mountain2Chance)
                         {
-                            blocks[randX, randY].setFeature(mountain2,1.0);
+                            blocks[randX, randY].SetFeature(mountain2,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + mountain3Chance)
                         {
-                            blocks[randX, randY].setFeature(mountain3,1.0);
+                            blocks[randX, randY].SetFeature(mountain3,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + mountain4Chance)
                         {
-                            blocks[randX, randY].setFeature(mountain4,1.0);
+                            blocks[randX, randY].SetFeature(mountain4,1.0);
                         }
                         break;
 
@@ -479,21 +478,21 @@ namespace Manage.Compute
                         feat = random.Next(0, 20);      //generate a random number 
                         if (feat >= 0 && feat < 0 + iceHillChance)      //determine if and what feature to place
                         {
-                            blocks[randX, randY].setFeature(iceHill,1.0);
+                            blocks[randX, randY].SetFeature(iceHill,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + iceHill2Chance)
                         {
-                            blocks[randX, randY].setFeature(iceHill2,1.0);
+                            blocks[randX, randY].SetFeature(iceHill2,1.0);
                         }
                         break;
                 }
                 //add biome point to map
-                blocks[randX, randY].setBiome(biomeType);
+                blocks[randX, randY].SetBiome(biomeType);
             }
             //add cities to features. Will be 
             for(int i = 0; i < cityNum; i++)
             {
-                blocks[cityArr[i, 0], cityArr[i, 1]].setFeature(city,1.2);
+                blocks[cityArr[i, 0], cityArr[i, 1]].SetFeature(city,1.2);
             }
         }
 
@@ -504,7 +503,7 @@ namespace Manage.Compute
             {
                 for (int j = 0; j < ySize; j++)
                 {
-                    System.Diagnostics.Debug.Write(string.Format("{0}", blocks[i, j].getBiomeType()));
+                    System.Diagnostics.Debug.Write(string.Format("{0}", blocks[i, j].GetBiomeType()));
                 }
                 System.Diagnostics.Debug.Write(Environment.NewLine);
             }
@@ -655,7 +654,7 @@ namespace Manage.Compute
                         xSizeInt -= 1;
                     }
 
-                    blocks[i, j].setRect(xPosInt, yPosInt, xSizeInt, ySizeInt);
+                    blocks[i, j].SetRect(xPosInt, yPosInt, xSizeInt, ySizeInt);
 
                     //if we are calculating the position of a chunk that happens to be a biome start point, 
                     //add the position to the start points array in slots 2 and 3 for x and y
