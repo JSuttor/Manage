@@ -95,6 +95,7 @@
     <Compile Include="Compute\City.cs" />
     <Compile Include="Compute\Factory.cs" />
     <Compile Include="Compute\Map.cs" />
+    <Compile Include="Compute\Item.cs" />
     <Compile Include="Controls\Button.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
