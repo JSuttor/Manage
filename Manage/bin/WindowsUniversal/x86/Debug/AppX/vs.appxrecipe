@@ -30,13 +30,13 @@
     <AppXManifest Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-05T05:23:06.977</Modified>
+      <Modified>2020-09-22T03:39:30.010</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Manage.exe">
       <PackagePath>entrypoint\Manage.exe</PackagePath>
-      <Modified>2020-09-05T05:23:03.915</Modified>
+      <Modified>2020-09-22T03:39:27.309</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\docto\.nuget\packages\monogame.framework.windowsuniversal\3.8.0.1641\lib\uap10.0\MonoGame.Framework.dll">
       <PackagePath>MonoGame.Framework.dll</PackagePath>
@@ -111,6 +111,10 @@
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <Modified>2020-08-12T02:24:35.237</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Buildings\factory.xnb">
+      <PackagePath>Content/Buildings\factory.xnb</PackagePath>
+      <Modified>2020-09-22T02:57:16.697</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Controls\basicButton.xnb">
       <PackagePath>Content/Controls\basicButton.xnb</PackagePath>
@@ -274,11 +278,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-09-05T05:23:05.335</Modified>
+      <Modified>2020-09-22T02:57:23.178</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Core\Manage.exe">
       <PackagePath>Manage.exe</PackagePath>
-      <Modified>2020-09-05T05:23:06.957</Modified>
+      <Modified>2020-09-22T03:39:30.005</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

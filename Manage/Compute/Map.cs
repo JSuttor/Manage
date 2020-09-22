@@ -18,7 +18,7 @@ using System.ComponentModel;
 
 namespace Manage.Compute
 {
-    class Map
+    public sealed class Map
     {
         //TOOLS
         Random random = new Random();   //used to generate random numbers
@@ -39,17 +39,28 @@ namespace Manage.Compute
         int[,] startPts;                //populated with beginning points for biome gen
         //Texture2D[,] features;          //map visual features
         Block[,] blocks;
+        Textures textures;
 
+        private static Map instance = null;
 
-
-        //constructor
-        public Map(ContentManager content)
+        public static Map Instance
         {
-            //load biome images on new object
-            loadAssets(content);
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Map();
+                    
+                }
+                return instance;
+            }
+        }
+        public void initMap()
+        {
+            textures = Textures.Instance;
         }
 
-        //generate biome map
+    //generate biome map
         public void generateMap(int passMapSize)
         {
             //note, algorithm slightly favors stretching biomes towards bottom right due to looping. Think about later. Maybe double buffer the array? sounds like a maybe
@@ -94,7 +105,7 @@ namespace Manage.Compute
             {
                 for (int j = 0; j < mapSizeX; j++)
                 {
-                    blocks[i, j] = new Block(water);
+                    blocks[i, j] = new Block();
                 }
             }
 
@@ -222,32 +233,32 @@ namespace Manage.Compute
                 {
                     if (blocks[i, j].GetBiomeType() == 0)
                     {
-                        blocks[i, j].SetTexture(water);
+                        blocks[i, j].SetTexture(textures.water);
                     }
                     //if 1, chunk has grass texture
                     else if (blocks[i, j].GetBiomeType() == 1)
                     {
-                        blocks[i, j].SetTexture(grass);
+                        blocks[i, j].SetTexture(textures.grass);
                     }
                     //if 2, chunk has forest texture
                     else if (blocks[i, j].GetBiomeType() == 2)
                     {
-                        blocks[i, j].SetTexture(forest);
+                        blocks[i, j].SetTexture(textures.forest);
                     }
                     //if 3, chunk has sand texture
                     else if (blocks[i, j].GetBiomeType() == 3)
                     {
-                        blocks[i, j].SetTexture(sand);
+                        blocks[i, j].SetTexture(textures.sand);
                     }
                     //if 4, chunk has mountains texture
                     else if (blocks[i, j].GetBiomeType() == 4)
                     {
-                        blocks[i, j].SetTexture(mountains);
+                        blocks[i, j].SetTexture(textures.mountains);
                     }
                     //if 5, chunk has snow texture
                     else if (blocks[i, j].GetBiomeType() == 5)
                     {
-                        blocks[i, j].SetTexture(snow);
+                        blocks[i, j].SetTexture(textures.snow);
                     }
                 }
             }
@@ -362,115 +373,115 @@ namespace Manage.Compute
                         feat = random.Next(0, 120);     //generate a random number 
                         if (feat >= 0 && feat < 0 + boatChance)     //determine if and what feature to place
                         {
-                            blocks[randX, randY].SetFeature(boat,1.0);
+                            blocks[randX, randY].SetFeature(textures.boat,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + wavesChance)
                         {
-                            blocks[randX, randY].SetFeature(waves,1.0);
+                            blocks[randX, randY].SetFeature(textures.waves,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + waves2Chance)
                         {
-                            blocks[randX, randY].SetFeature(waves2,1.0);
+                            blocks[randX, randY].SetFeature(textures.waves2,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + waves3Chance)
                         {
-                            blocks[randX, randY].SetFeature(waves3,1.0);
+                            blocks[randX, randY].SetFeature(textures.waves3,1.0);
                         }
                         else if (feat >= 40 && feat < 40 + monsterChance)
                         {
-                            blocks[randX, randY].SetFeature(monster,1.0);
+                            blocks[randX, randY].SetFeature(textures.monster,1.0);
                         }
                         else if (feat >= 50 && feat < 50 + islandChance)
                         {
-                            blocks[randX, randY].SetFeature(island,1.0);
+                            blocks[randX, randY].SetFeature(textures.island,1.0);
                         }
                         break;
                     case 1:
                         feat = random.Next(0, 50);      //generate a random number 
                         if (feat >= 0 && feat < 0 + grass1Chance)   //determine if and what feature to place
                         {
-                            blocks[randX, randY].SetFeature(grass1,1.0);
+                            blocks[randX, randY].SetFeature(textures.grass1,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + hillChance)
                         {
-                            blocks[randX, randY].SetFeature(hill,1.0);
+                            blocks[randX, randY].SetFeature(textures.hill,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + hill2Chance)
                         {
-                            blocks[randX, randY].SetFeature(hill2,1.0);
+                            blocks[randX, randY].SetFeature(textures.hill2,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + hill3Chance)
                         {
-                            blocks[randX, randY].SetFeature(hill3,1.0);
+                            blocks[randX, randY].SetFeature(textures.hill3,1.0);
                         }
                         else if (feat >= 40 && feat < 40 + house1Chance)
                         {
-                            blocks[randX, randY].SetFeature(house1,1.0);
+                            blocks[randX, randY].SetFeature(textures.house1,1.0);
                         }
                         break;
                     case 2:
                         feat = random.Next(0, 40);      //generate a random number 
                         if (feat >= 0 && feat < 0 + forest1Chance)  //determine if and what feature to place
                         {
-                            blocks[randX, randY].SetFeature(forest1,1.0);
+                            blocks[randX, randY].SetFeature(textures.forest1,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + forest2Chance)
                         {
-                            blocks[randX, randY].SetFeature(forest2,1.0);
+                            blocks[randX, randY].SetFeature(textures.forest2,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + forest3Chance)
                         {
-                            blocks[randX, randY].SetFeature(forest3,1.0);
+                            blocks[randX, randY].SetFeature(textures.forest3,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + forest4Chance)
                         {
-                            blocks[randX, randY].SetFeature(forest4,1.0);
+                            blocks[randX, randY].SetFeature(textures.forest4,1.0);
                         }
                         break;
                     case 3:
                         feat = random.Next(0, 60);      //generate a random number 
                         if (feat >= 0 && feat < 0 + cactiChance)    //determine if and what feature to place
                         {
-                            blocks[randX, randY].SetFeature(cacti,1.0);
+                            blocks[randX, randY].SetFeature(textures.cacti,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + cactusChance)
                         {
-                            blocks[randX, randY].SetFeature(cactus,1.0);
+                            blocks[randX, randY].SetFeature(textures.cactus,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + desertChance)
                         {
-                            blocks[randX, randY].SetFeature(desert,1.0);
+                            blocks[randX, randY].SetFeature(textures.desert,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + desertRockChance)
                         {
-                            blocks[randX, randY].SetFeature(desertRock,1.0);
+                            blocks[randX, randY].SetFeature(textures.desertRock,1.0);
                         }
                         else if (feat >= 40 && feat < 40 + duneChance)
                         {
-                            blocks[randX, randY].SetFeature(dune,1.0);
+                            blocks[randX, randY].SetFeature(textures.dune,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + desertHillChance)
                         {
-                            blocks[randX, randY].SetFeature(desertHill,1.0);
+                            blocks[randX, randY].SetFeature(textures.desertHill,1.0);
                         }
                         break;
                     case 4:
                         feat = random.Next(0, 40);      //generate a random number 
                         if (feat >= 0 && feat < 0 + mountain1Chance)    //determine if and what feature to place
                         {
-                            blocks[randX, randY].SetFeature(mountain1,1.0);
+                            blocks[randX, randY].SetFeature(textures.mountain1,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + mountain2Chance)
                         {
-                            blocks[randX, randY].SetFeature(mountain2,1.0);
+                            blocks[randX, randY].SetFeature(textures.mountain2,1.0);
                         }
                         else if (feat >= 20 && feat < 20 + mountain3Chance)
                         {
-                            blocks[randX, randY].SetFeature(mountain3,1.0);
+                            blocks[randX, randY].SetFeature(textures.mountain3,1.0);
                         }
                         else if (feat >= 30 && feat < 30 + mountain4Chance)
                         {
-                            blocks[randX, randY].SetFeature(mountain4,1.0);
+                            blocks[randX, randY].SetFeature(textures.mountain4,1.0);
                         }
                         break;
 
@@ -478,21 +489,21 @@ namespace Manage.Compute
                         feat = random.Next(0, 20);      //generate a random number 
                         if (feat >= 0 && feat < 0 + iceHillChance)      //determine if and what feature to place
                         {
-                            blocks[randX, randY].SetFeature(iceHill,1.0);
+                            blocks[randX, randY].SetFeature(textures.iceHill,1.0);
                         }
                         else if (feat >= 10 && feat < 10 + iceHill2Chance)
                         {
-                            blocks[randX, randY].SetFeature(iceHill2,1.0);
+                            blocks[randX, randY].SetFeature(textures.iceHill2,1.0);
                         }
                         break;
                 }
                 //add biome point to map
                 blocks[randX, randY].SetBiome(biomeType);
             }
-            //add cities to features. Will be 
+            //add cities to blocks. Will be 
             for(int i = 0; i < cityNum; i++)
             {
-                blocks[cityArr[i, 0], cityArr[i, 1]].SetFeature(city,1.2);
+                blocks[cityArr[i, 0], cityArr[i, 1]].city = new City();
             }
         }
 
@@ -699,91 +710,24 @@ namespace Manage.Compute
                     blocks[i, j].DrawFeature(size, mapSprite);  //if there is a feature on this block
                 }
             }
-            
+            for (int i = zoomStartY; i < zoomSubY; i++) //for each x
+            {
+                for (int j = zoomStartX; j < zoomSubX; j++) //for each y
+                {
+                    if (blocks[i, j].building != null)
+                    {
+                        blocks[i, j].building.DrawBuilding(size, mapSprite);
+                    }
+                }
+            }
+
             mapSprite.End();
         }
 
-        //biome chunk textures
-        private Texture2D water;
-        private Texture2D sand;
-        private Texture2D forest;
-        private Texture2D grass;
-        private Texture2D mountains;
-        private Texture2D snow;
-        private Texture2D city;
-        //biome feature textures
-        private Texture2D island;
-        private Texture2D boat;
-        private Texture2D cacti;
-        private Texture2D cactus;
-        private Texture2D desert;
-        private Texture2D desertRock;
-        private Texture2D desertHill;
-        private Texture2D dune;
-        private Texture2D forest1;
-        private Texture2D forest2;
-        private Texture2D forest3;
-        private Texture2D forest4;
-        private Texture2D grass1;
-        private Texture2D hill;
-        private Texture2D hill2;
-        private Texture2D hill3;
-        private Texture2D house1;
-        private Texture2D iceHill;
-        private Texture2D iceHill2;
-        private Texture2D monster;
-        private Texture2D mountain1;
-        private Texture2D mountain2;
-        private Texture2D mountain3;
-        private Texture2D mountain4;
-        private Texture2D waves;
-        private Texture2D waves2;
-        private Texture2D waves3;
+
 
         public void loadAssets(ContentManager Content)
         {
-            //load biome image assets
-            water = Content.Load<Texture2D>("map/water");
-            sand = Content.Load<Texture2D>("map/sand");
-            forest = Content.Load<Texture2D>("map/forest");
-            grass = Content.Load<Texture2D>("map/grass");
-            mountains = Content.Load<Texture2D>("map/mountain");
-            snow = Content.Load<Texture2D>("map/snow");
-            city = Content.Load<Texture2D>("map/city");
-
-            
-            cacti = Content.Load<Texture2D>("map/cacti");
-            cactus = Content.Load<Texture2D>("map/cactus");
-            desert = Content.Load<Texture2D>("map/desert");
-            desertRock = Content.Load<Texture2D>("map/desertRock");
-            desertHill = Content.Load<Texture2D>("map/desertHill");
-            dune = Content.Load<Texture2D>("map/dune");
-
-            forest1 = Content.Load<Texture2D>("map/forest1");
-            forest2 = Content.Load<Texture2D>("map/forest2");
-            forest3 = Content.Load<Texture2D>("map/forest3");
-            forest4 = Content.Load<Texture2D>("map/forest4");
-
-            mountain1 = Content.Load<Texture2D>("map/mountain1");
-            mountain2 = Content.Load<Texture2D>("map/mountain2");
-            mountain3 = Content.Load<Texture2D>("map/mountain3");
-            mountain4 = Content.Load<Texture2D>("map/mountain4");
-
-            grass1 = Content.Load<Texture2D>("map/grass1");
-            hill = Content.Load<Texture2D>("map/hill");
-            hill2 = Content.Load<Texture2D>("map/hill2");
-            hill3 = Content.Load<Texture2D>("map/hill3");
-            house1 = Content.Load<Texture2D>("map/house1");
-
-            iceHill = Content.Load<Texture2D>("map/iceHill");
-            iceHill2 = Content.Load<Texture2D>("map/iceHill2");
-            
-            monster = Content.Load<Texture2D>("map/monster");
-            waves = Content.Load<Texture2D>("map/waves");
-            waves2 = Content.Load<Texture2D>("map/waves2");
-            waves3 = Content.Load<Texture2D>("map/waves3");
-            boat = Content.Load<Texture2D>("map/boat");
-            island = Content.Load<Texture2D>("map/island");
         }
 
         private MouseState currentMouse;

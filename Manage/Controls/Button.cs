@@ -53,7 +53,6 @@ namespace Manage.Controls
             var color = Color.White;
             if (isHovering)
                 color = Color.LightGray;
-
             spriteBatch.Draw(buttonTexture, Rectangle, color);
 
             if (!string.IsNullOrEmpty(Text))

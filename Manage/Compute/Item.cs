@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Manage.Compute
 {
     //part can be anything from a raw material to components of a finished product
-    class Item
+    public class Item
     {
         public string partName;                        //name of part
         public string partDesc;                        //description
@@ -49,6 +49,7 @@ namespace Manage.Compute
                 {
                     itemList[i].item = item;
                     itemList[i].needed = count;
+                    placed = true;
                 }
             }
         }

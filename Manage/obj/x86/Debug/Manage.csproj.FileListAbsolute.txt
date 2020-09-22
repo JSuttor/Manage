@@ -84,3 +84,4 @@ E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\waves2.xnb
 E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\waves3.xnb
 E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\desertHill.xnb
 E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Map\island.xnb
+E:\projects\Manage\Manage\bin\WindowsUniversal\x86\Debug\Content\Buildings\factory.xnb

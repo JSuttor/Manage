@@ -90,16 +90,20 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButtonPanel.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="Compute\Block.cs" />
+    <Compile Include="Compute\Building.cs" />
     <Compile Include="Compute\City.cs" />
     <Compile Include="Compute\Factory.cs" />
     <Compile Include="Compute\Map.cs" />
     <Compile Include="Compute\Item.cs" />
     <Compile Include="Controls\Button.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Textures.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

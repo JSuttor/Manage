@@ -1,4 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"E:/projects/Manage/Manage/Content/Buildings/factory.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Buildings/factory.xnb","TextureProcessor","Texture2DContent",1705,160085,0.18542
 "E:/projects/Manage/Manage/Content/Controls/basicButton.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Controls/basicButton.xnb","TextureProcessor","Texture2DContent",268,8277,0.1517288
 "E:/projects/Manage/Manage/Content/Controls/menuButton.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Controls/menuButton.xnb","TextureProcessor","Texture2DContent",409,8277,0.1344516
 "E:/projects/Manage/Manage/Content/Controls/refresh.png","E:/projects/Manage/Manage/Content/bin/WindowsStoreApp/Content/Controls/refresh.xnb","TextureProcessor","Texture2DContent",11943,1048661,0.1656008

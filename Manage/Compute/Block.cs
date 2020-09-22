@@ -13,6 +13,7 @@ namespace Manage.Compute
     class Block
     {
         Rectangle blockRect;
+        Rectangle buildingRect;
         double sizeMult;
         int biomeType = 0;
         Texture2D biomeTexture;
@@ -20,13 +21,20 @@ namespace Manage.Compute
         bool isHovering = false;
         private MouseState previousMouse;
         private MouseState currentMouse;
-        public event EventHandler Click;
+        //public event EventHandler Click;
         bool startPoint = false;
         Vector2 position;
+        public City city;
+        public Building building;
+        Player p1;
+        Textures textures;
 
-        public Block(Texture2D water)
+
+        public Block()
         {
-            biomeTexture = water;
+            textures = Textures.Instance;
+            biomeTexture = textures.water;
+            p1 = Player.Instance;
         }
         public void SetRect(int xPos, int yPos, int xSize, int ySize)
         {
@@ -75,7 +83,13 @@ namespace Manage.Compute
 
                 if (currentMouse.LeftButton == ButtonState.Released && previousMouse.LeftButton == ButtonState.Pressed)
                 {
-                    Click?.Invoke(this, new EventArgs()); ;
+                    switch (p1.placing)
+                    {
+                        case "factory":
+                            building = new Factory(1, position);
+                            building.texture = textures.factory;
+                            break;
+                    }
                 }
             }
 

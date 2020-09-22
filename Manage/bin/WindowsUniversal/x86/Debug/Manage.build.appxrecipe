@@ -84,6 +84,9 @@
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Buildings\factory.xnb">
+      <PackagePath>Content/Buildings\factory.xnb</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\projects\Manage\Manage\Content\bin\WindowsStoreApp\Content\Controls\basicButton.xnb">
       <PackagePath>Content/Controls\basicButton.xnb</PackagePath>
     </AppxPackagedFile>
